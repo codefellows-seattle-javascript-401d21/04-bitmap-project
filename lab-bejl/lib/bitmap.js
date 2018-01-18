@@ -1,3 +1,5 @@
 'use strict';
 
-const bitmap = modules.exports = {};
+modules.exports = function(buffer) {
+
+}
