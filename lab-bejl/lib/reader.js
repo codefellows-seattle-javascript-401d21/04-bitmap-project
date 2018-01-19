@@ -8,19 +8,17 @@ const reader = module.exports = {};
 
 reader.readFile = function () {
   fs.readFile('../assets/bitmap.bmp', (err, data) => {
-    if (err) console.error(err);
-    // console.log(data);
+    if (err) {
+      console.error(err);
+    };
     const input = new Bitmap(data);
-    // console.log('inside reader',input.length);
-    // console.log('inside reader',input.offset);
-    // console.log('inside reader',input.width)
-    // console.log(input.);
-    transform.black(input, (err,data) => {
-      if (err) console.error(err);
-    //   console.log();
+    const transformed = transform.darkenDarks(input);
+    fs.writeFile('./limitedchange.bmp', transformed.allData, (err, data) => {
+      if (err) {
+        console.error(err);
+      };
     });
   });
 };
-
 
 reader.readFile();

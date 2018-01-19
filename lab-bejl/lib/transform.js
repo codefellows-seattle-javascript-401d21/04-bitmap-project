@@ -3,27 +3,35 @@
 const transform = module.exports = {};
 const fs = require('fs');
 
-transform.black = function(input, callback) {
-//   for (const value of input.allData.values()) {
-//     // input[value] = 0;
-//     console.log(input.allData[value]);
-//   }
-//   console.log('alldata',input);
-  //   console.log('offset',input.offset);
-  //   console.log('length',input.length);
-  //   console.log('width',input.width);
-
-  // input.allData.fill('FF', input.offset, input.offset+2000, 'utf-8');
-
-  // for (let x = input.allData.length; x < input.allData.length; x+4) {
-  //     input.allData[x]=255;
-  // }
-
-  input.pixelArray.fill('FF', 'hex');
-
-  fs.writeFile('./limitedchange.bmp', input.allData, (err, data) => {
-    if (err) console.log(err);
-    return data;
-  });
-  callback(null, input);
+transform.darkenDarks = function(input) {
+  for ( let x = 0; x < input.pixelArray.length; x++ ) {
+    if ( input.pixelArray[x] > 50 ) {
+      input.pixelArray[x] = input.pixelArray[x] - 50;
+    };
+  };
+  return input;
+}
+transform.neon = function(input) {
+  for ( let x = 0; x < input.pixelArray.length; x++ ) {
+      input.pixelArray[x] = input.pixelArray[x] - 100;
+  };
+  return input;
+};
+transform.invertColors = function(input) {
+  for ( let x = 0; x < input.pixelArray.length; x++ ) {
+      input.pixelArray[x] = 255-input.pixelArray[x];
+  };
+  return input;
+};
+transform.noise = function(input) {
+  for ( let x = 0; x < input.pixelArray.length; x++ ) {
+    input.pixelArray[x] = 255-input.pixelArray[x];
+  };
+  return input;
+};
+transform.black = function(input) {
+  for ( let x = 0; x < input.pixelArray.length; x++ ) {
+    input.pixelArray[x] = 0;
+  };
+  return input;
 };
