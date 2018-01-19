@@ -12,11 +12,18 @@ transform.black = function(input, callback) {
   //   console.log('offset',input.offset);
   //   console.log('length',input.length);
   //   console.log('width',input.width);
-  input.allData.fill(250, input.offset, input.length);
-  fs.writeFile('./test2.bmp',input.allData, (err, data) => {
+
+  // input.allData.fill('FF', input.offset, input.offset+2000, 'utf-8');
+
+  // for (let x = input.allData.length; x < input.allData.length; x+4) {
+  //     input.allData[x]=255;
+  // }
+
+  input.pixelArray.fill('FF', 'hex');
+
+  fs.writeFile('./limitedchange.bmp', input.allData, (err, data) => {
     if (err) console.log(err);
     return data;
   });
   callback(null, input);
 };
-
