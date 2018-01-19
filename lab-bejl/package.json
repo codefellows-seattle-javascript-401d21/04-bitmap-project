@@ -12,7 +12,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "eslint -r *.js"
+    "test": "jest --verbose",
+    "lint": "eslint -r *.js"
   },
   "author": "",
   "license": "ISC"
