@@ -16,7 +16,7 @@ reader.readFile = function () {
     fs.writeFile('./limitedchange.bmp', transformed.allData, (err, data) => {
       if (err) {
         console.error(err);
-      }
+      };
     });
   });
 };
