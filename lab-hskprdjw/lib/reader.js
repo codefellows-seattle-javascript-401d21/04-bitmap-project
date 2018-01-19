@@ -3,6 +3,7 @@
 
 const fs = require('fs');
 const Bmp = require('./bitmap');
+const trans = require('./transform.js');
 
 const reading = module.exports = {};
 
@@ -12,8 +13,13 @@ reading.readWrite = function() {
       console.error(err);
     }
     let bmp = new Bmp(data);
-    console.log('array',bmp.pixelArray.length);
-    console.log('all', bmp.allData.length);
-    // fs.writeFile('../assets/bitmapNew.bmp', data, err => err ? console.error(err) : undefined);
+    // console.log('start',bmp);
+
+    trans.reverseImage(bmp, (err, data) => {
+      fs.writeFile('../assets/bitmapFlip.bmp', data.allData, err => err ? console.error(err) : undefined);
+    });
+    trans.randomImage(bmp, (err, data) => {
+      fs.writeFile('../assets/bitmapRandom.bmp', data.allData, err => err ? console.error(err) : undefined);
+    });
   });
 };
