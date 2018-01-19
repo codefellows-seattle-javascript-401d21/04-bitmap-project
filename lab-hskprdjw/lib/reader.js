@@ -15,11 +15,17 @@ reading.readWrite = function() {
     let bmp = new Bmp(data);
     // console.log('start',bmp);
 
-    trans.reverseImage(bmp, (err, data) => {
-      fs.writeFile('../assets/bitmapFlip.bmp', data.allData, err => err ? console.error(err) : undefined);
-    });
-    trans.randomImage(bmp, (err, data) => {
-      fs.writeFile('../assets/bitmapRandom.bmp', data.allData, err => err ? console.error(err) : undefined);
+    // trans.reverseImage(bmp, (err, data) => {
+    //   fs.writeFile('../assets/bitmapFlip.bmp', data.allData, err => err ? console.error(err) : undefined);
+    // });
+    // trans.randomImage(bmp, (err, data) => {
+    //   fs.writeFile('../assets/bitmapRandom.bmp', data.allData, err => err ? console.error(err) : undefined);
+    // });
+    // trans.test(bmp, (err, data) => {
+    //   fs.writeFile('../assets/bitmapTest.bmp', data.allData, err => err ? console.error(err) : undefined);
+    // });
+    trans.redChannel(bmp, (err, data) => {
+      fs.writeFile('../assets/bitmapRed.bmp', data.allData, err => err ? console.error(err) : undefined);
     });
   });
 };
