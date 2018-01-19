@@ -8,6 +8,7 @@ const reader = module.exports = {};
 
 reader.readFile = function () {
   fs.readFile('../assets/bitmap.bmp', (err, data) => {
+    if(typeof data !== 'string') return null;
     if (err) {
       console.error(err);
     }
