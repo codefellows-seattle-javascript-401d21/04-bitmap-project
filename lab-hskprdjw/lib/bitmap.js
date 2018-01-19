@@ -1,11 +1,7 @@
 'use strict';
 
 
-// const fs = require('fs');
-// const Bmp = require('./lib/bitmap')
-
-// const bitDo = module.exports = {};
-
+// this function just takes the buffer and builds an object for us.
 module.exports = function(buffer) {
   this.allData = buffer;
   this.sig = buffer.toString('utf-8', 0, 2);
