@@ -1,8 +1,14 @@
 'use strict';
 
-module.exports = function(buffer) {
-  this.allData = buffer;
-  this.offset = buffer.readUInt32LE(10);
-  this.pixelArray = buffer.slice(54, this.offset);
+const bitmap = module.exports = {};
+
+bitmap.breakIt = function(buffer) {
+  const allData = buffer;
+  const offset = allData.readUInt32LE(10);
+  const pixelArray = allData.slice(54, offset);
+  return pixelArray;
 };
 
+bitmap.fixIt = function(buffer) {
+  
+};

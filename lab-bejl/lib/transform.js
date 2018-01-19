@@ -2,9 +2,14 @@
 
 const transform = module.exports = {};
 
-transform.black = function(pixelArray) {
-  for (let x in pixelArray) {
-    pixelArray[x] = 0;
+transform.black = function(pixelArray, callback) {
+//   for (let x in pixelArray) {
+//     pixelArray[x] = 0;
+//   }
+  for (const value of pixelArray.values()) {
+    pixelArray[value] = 0;
+    console.log(pixelArray[value]);
   }
-  return pixelArray;
+  callback(null, pixelArray);
 };
+
