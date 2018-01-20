@@ -4,16 +4,24 @@ const reader = require ('../lib/reader.js');
 
 describe('Reader Module', function() {
   describe('#reader', function() {
-    // it('expects the reader module path and transformation type to be a string', function() {
-    //   expect(reader.readFile([123])).toBe(null);
-    // });
-
-    it('expects the reader module to return an error if transform type does not exist', (done) => {
+    it(`should return an error if original file is not .bmp`, () => {
+      function ender(){
+        reader.readFile('./assets/bitmap.js','darkenDarks','./assets/test.bmp');
+      };
+      expect(ender).toThrow();
+    });
+    it('should return an error if transform type does not exist', (done) => {
       function bill(){
         reader.readFile('./assets/bitmap.bmp','darkenDarkslll','./assets/test.bmp');
-      }
+      };
       expect(bill).toThrow();
       done();
+    });
+    it(`should return an error if destination file is not .bmp`, () => {
+      function liza(){
+        reader.readFile('./assets/bitmap.js','darkenDarks','./assets/test.bmp');
+      };
+      expect(liza).toThrow();
     });
   });
 
