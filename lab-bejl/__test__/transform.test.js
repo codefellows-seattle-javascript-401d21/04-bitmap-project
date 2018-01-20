@@ -15,13 +15,13 @@ describe(`transform module`, function() {
     it(`should throw if first parameter is not an instance of bitmap`, () => {
       function transformInvBitmap() {
         transform('not a bitmap', 'neon');
-      };
+      }
       expect(transformInvBitmap).toThrow(/bitmap/);
     });
     it(`should throw if second parameter is not a valid transformation`, () => {
       function transformInvTransformation() {
         transform(validBitmap, 500);
-      };
+      }
       expect(transformInvTransformation).toThrow(/not found/);
     });
   });

@@ -7,10 +7,12 @@ const reader = module.exports = {};
 
 reader.readFile = function (path, transformation, destination) {
   console.log(path, destination, transformation);
+
   let err = !(transform.validTransformations.includes(transformation)) ? 'ERROR: transformation was not found'
   : !(path.includes('.bmp', (path.length - 3))) ? 'ERROR: please specify a valid .bmp file'
   : !(destination.includes('.bmp', (destination.length - 3))) ? 'ERROR: please specify a valid destination .bmp file'
   : null;
+
   if (err) {
     throw (err);
   }
@@ -31,4 +33,4 @@ reader.readFile = function (path, transformation, destination) {
 };
 
 //reader.readFile(`${process.argv[2]}`, `${process.argv[3]}`, `${process.argv[4]}`);
-// node reader.js '../assets/bitmap.bmp' 'black' './limitedchange.bmp'
+// node index.js './assets/bitmap.bmp' 'black' './limitedchange.bmp'
