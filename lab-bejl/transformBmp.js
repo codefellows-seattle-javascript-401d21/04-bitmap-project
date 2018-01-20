@@ -16,4 +16,4 @@ function cliInput() {
 
 cliInput();
 
-// node transformBmp ./assets/bitmap.bmp black ./limitedchange.bmp
+// node transformBmp ./assets/bitmap.bmp black ./assets/limitedchange.bmp
