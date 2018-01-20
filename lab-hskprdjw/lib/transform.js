@@ -6,6 +6,7 @@ const reading = module.exports = {};
 
 reading.reverseImage = function(bmp, callback) {
   let test = bmp.pixelArray.reverse();
+  console.log('reversed pixel arry', test.length);
   bmp.pixelArray = test;
   // console.log(newImage);
   callback(null, bmp);
@@ -32,7 +33,7 @@ reading.testRandom = function(bmp, callback) {
   }
   let final = Buffer.from([...orginal]);
   bmp.pixelArray = final;
-  console.log(bmp);
+  // console.log(bmp);
   callback(null, bmp);
 };
 
@@ -62,6 +63,7 @@ reading.boostBlue = function(bmp, callback) {
 reading.boostGreen = function(bmp, callback) {
   for(let i = 0; i < bmp.pixelArray.length; i +=4) {
     bmp.pixelArray[i + 1] = 255;
+    // console.log(bmp.pixelArray);
   }
   callback(null, bmp);
 };
@@ -73,9 +75,25 @@ reading.boostRed = function(bmp, callback) {
   callback(null, bmp);
 };
 
-reading.testApla = function(bmp, callback) {
+reading.testAlpha = function(bmp, callback) {
   for(let i = 0; i < bmp.pixelArray.length; i +=4) {
     bmp.pixelArray[i + 5 ] = 0.1;
   }
+  callback(null, bmp);
+};
+
+reading.mirror = function(bmp, callback) {
+  let mirror = [];
+  let height = bmp.height;
+  let width = bmp.width;
+  let merged = [];
+
+  for(let i = 0; i < height; i += width) {
+    let row = bmp.pixelArray.slice(0, width - 1).reverse();
+    mirror.push(row);
+    merged = [].concat.(...mirror)
+    console.log('mirror array section', row);
+  }
+  bmp.pixelArray = merged;
   callback(null, bmp);
 };
