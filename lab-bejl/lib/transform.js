@@ -2,17 +2,16 @@
 
 const Bitmap = require('./bitmap.js');
 
-const validTransformations = [
-  'neon',
-  'invert',
-  'black',
-  'darkenDarks'
-]
-
-module.exports = function(bitmapData, transformation) {
+const transform = function(bitmapData, transformation) {
+  // transform.validTransformations = [
+  //   'neon',
+  //   'invert',
+  //   'black',
+  //   'darkenDarks'
+  // ];
 
   let err = !(bitmapData instanceof Bitmap) ? 'ERROR: file is not valid bitmap'
-  : !(validTransformations.includes(transformation)) ? 'ERROR: transformation was not found'
+  : !(transform.validTransformations.includes(transformation)) ? 'ERROR: transformation was not found'
   : null;
   if (err) {
     throw (err);
@@ -27,3 +26,12 @@ module.exports = function(bitmapData, transformation) {
   }
   return bitmapData;
 };
+
+transform.validTransformations = [
+  'neon',
+  'invert',
+  'black',
+  'darkenDarks'
+];
+
+module.exports = transform;
