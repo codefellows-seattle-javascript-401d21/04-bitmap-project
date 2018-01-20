@@ -8,10 +8,12 @@ const reader = module.exports = {};
 reader.readFile = function (path, transformation, destination) {
   console.log(path, destination, transformation);
 
+  //node transformBmp ./assets/bitmap.bmp black ./assets/limitedchange.bmp
+
   let err = !(transform.validTransformations.includes(transformation)) ? 'ERROR: transformation was not found'
-  : !(path.includes('.bmp', (path.length - 3))) ? 'ERROR: please specify a valid .bmp file'
-  : !(destination.includes('.bmp', (destination.length - 3))) ? 'ERROR: please specify a valid destination .bmp file'
-  : null;
+    : !(path.includes('bmp', (path.length - 3))) ? 'ERROR: please specify a valid .bmp file'
+      : !(destination.includes('bmp', (destination.length - 3))) ? 'ERROR: please specify a valid destination .bmp file'
+        : null;
 
   if (err) {
     throw (err);
@@ -21,16 +23,15 @@ reader.readFile = function (path, transformation, destination) {
     if (err) {
       console.error(err);
     }
-    // console.log();
     const bitmapData = new Bitmap(data);
     const transformed = transform(bitmapData, transformation);
     fs.writeFile(destination, transformed.allData, (err, data) => {
       if (err) {
         console.error(err);
       }
+      if (data) {
+        console.log('success');
+      }
     });
   });
 };
-
-//reader.readFile(`${process.argv[2]}`, `${process.argv[3]}`, `${process.argv[4]}`);
-// node index.js './assets/bitmap.bmp' 'black' './limitedchange.bmp'
