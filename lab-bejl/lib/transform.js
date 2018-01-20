@@ -1,6 +1,23 @@
 'use strict';
 
+const Bitmap = require('./bitmap.js');
+
+const validTransformations = [
+  'neon',
+  'invert',
+  'black',
+  'darkenDarks'
+]
+
 module.exports = function(bitmapData, transformation) {
+
+  let err = !(bitmapData instanceof Bitmap) ? 'ERROR: file is not valid bitmap'
+  : !(validTransformations.includes(transformation)) ? 'ERROR: transformation was not found'
+  : null;
+  if (err) {
+    throw (err);
+  }
+
   for ( let x = 0; x < bitmapData.pixelArray.length; x++ ) {
     bitmapData.pixelArray[x] = transformation === 'neon' ? bitmapData.pixelArray[x] - 100
     : transformation === 'invert' ? 255 - bitmapData.pixelArray[x]
@@ -10,36 +27,3 @@ module.exports = function(bitmapData, transformation) {
   }
   return bitmapData;
 };
-
-// transform.darkenDarks = function(input) {
-//   for ( let x = 0; x < input.pixelArray.length; x++ ) {
-//     if ( input.pixelArray[x] > 50 ) {
-//       input.pixelArray[x] = input.pixelArray[x] - 50;
-//     }
-//   }
-//   return input;
-// };
-// transform.neon = function(input) {
-//   for ( let x = 0; x < input.pixelArray.length; x++ ) {
-//     input.pixelArray[x] = input.pixelArray[x] - 100;
-//   }
-//   return input;
-// };
-// transform.invertColors = function(input) {
-//   for ( let x = 0; x < input.pixelArray.length; x++ ) {
-//     input.pixelArray[x] = 255-input.pixelArray[x];
-//   }
-//   return input;
-// };
-// transform.noise = function(input) {
-//   for ( let x = 0; x < input.pixelArray.length; x++ ) {
-//     input.pixelArray[x] = 255-input.pixelArray[x];
-//   }
-//   return input;
-// };
-// transform.black = function(input) {
-//   for ( let x = 0; x < input.pixelArray.length; x++ ) {
-//     input.pixelArray[x] = 0;
-//   }
-//   return input;
-// };
