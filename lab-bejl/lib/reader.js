@@ -7,8 +7,10 @@ const reader = module.exports = {};
 
 reader.readFile = function (path, transformation, destination) {
   console.log(path, destination, transformation);
-  if (transformation !== 'black') {
-    throw 'transformation is not valid';
+  let err = !(transform.validTransformations.includes(transformation)) ? 'ERROR: transformation was not found'
+  : null;
+  if (err) {
+    throw (err);
   }
   if (typeof transformation !== 'string') return null;
   fs.readFile(path, (err, data) => {

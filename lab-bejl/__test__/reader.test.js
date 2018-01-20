@@ -12,7 +12,7 @@ describe('Reader Module', function() {
       function bill(){
         reader.readFile('./assets/bitmap.bmp','darkenDarkslll','./assets/test.bmp');
       }
-      expect(bill()).toThrowError();
+      expect(bill).toThrow();
       done();
     });
   });
