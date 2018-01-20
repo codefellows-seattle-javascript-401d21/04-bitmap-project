@@ -5,16 +5,21 @@ const Bitmap = require('./bitmap.js');
 const transform = require('./transform.js');
 const reader = module.exports = {};
 
+let path = process.argv[2];
+let destination = process.argv[3];
+let transformation = (process.argv[4]);
 
-reader.readFile = function (transformation) {
-  fs.readFile('../assets/bitmap.bmp', (err, data) => {
-    if(typeof data !== 'string') return null;
+reader.readFile = function (path, transformation, destination) {
+  console.log(path, destination, transformation);
+  if (typeof transformation !== 'string') return null;
+  fs.readFile(path, (err, data) => {  
     if (err) {
       console.error(err);
     }
+    // console.log();
     const bitmapData = new Bitmap(data);
     const transformed = transform(bitmapData, transformation);
-    fs.writeFile('./limitedchange.bmp', transformed.allData, (err, data) => {
+    fs.writeFile(destination, transformed.allData, (err, data) => {
       if (err) {
         console.error(err);
       }
@@ -22,4 +27,7 @@ reader.readFile = function (transformation) {
   });
 };
 
-reader.readFile();
+reader.readFile(path, transformation, destination);
+// node reader.js '../assets/bitmap.bmp' 'black' './limitedchange.bmp'
+// process.argv[2]
+// './limitedchange.bmp'
