@@ -7,5 +7,5 @@ let filenameout = process.argv[3];
 let transform = process.argv[4];
 
 
-console.log('filename in index before function call', filenamein);
+
 read.readWrite(filenamein, filenameout, transform);

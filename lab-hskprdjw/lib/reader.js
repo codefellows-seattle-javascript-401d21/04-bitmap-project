@@ -23,15 +23,9 @@ reading.readWrite = function(filenamein, filenameout, transform) {
       });
     }
 
-    if (transform ==='boostRed') {
-      trans.boostRed(bmp, (err, data) => {
+    if (transform ==='boostBlue') {
+      trans.boostBlue(bmp, (err, data) => {
         fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err) : undefined);
-      });
-    }
-
-    if (transform ==='boostGreen') {
-      trans.boostGreen(bmp, (err, data) => {
-        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err): undefined);
       });
     }
 
@@ -41,31 +35,5 @@ reading.readWrite = function(filenamein, filenameout, transform) {
       });
     }
 
-    if (transform === 'randomImage') {
-      trans.randomImage(bmp, (err, data) => {
-        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err) : undefined);
-      });
-    }
-
-    if (transform === 'test') {
-      trans.test(bmp, (err, data) => {
-        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err) : undefined);
-      });
-    }
-
-    if(transform ==='testAlpha') {
-      trans.testAlpha(bmp, (err, data) => {
-        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err) : undefined);
-      });
-    }
-
-    if(transform ==='mirror') {
-      trans.mirror(bmp, (err, data) => {
-        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err) : undefined);
-      });
-    }
-
   });
 };
-
-// reading.readWrite();
