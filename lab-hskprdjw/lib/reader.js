@@ -35,5 +35,12 @@ reading.readWrite = function(filenamein, filenameout, transform) {
       });
     }
 
+    if (transform === 'randomImage') {
+      trans.randomImage(bmp, (err, data) => {
+        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err): undefined);
+      });
+    }
+
+
   });
 };
