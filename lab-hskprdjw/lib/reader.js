@@ -24,8 +24,10 @@ reading.readWrite = function() {
     // trans.test(bmp, (err, data) => {
     //   fs.writeFile('../assets/bitmapTest.bmp', data.allData, err => err ? console.error(err) : undefined);
     // });
-    trans.redChannel(bmp, (err, data) => {
+    trans.testApla(bmp, (err, data) => {
       fs.writeFile('../assets/bitmapRed.bmp', data.allData, err => err ? console.error(err) : undefined);
     });
   });
 };
+
+reading.readWrite();
