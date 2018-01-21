@@ -3,6 +3,7 @@
 
 // this function just takes the buffer and builds an object for us.
 module.exports = function(buffer) {
+  if (!buffer) return null;
   this.allData = buffer;
   this.sig = buffer.toString('utf-8', 0, 2);
   this.fileSize = buffer.readUInt32LE(2);

@@ -1,46 +1,32 @@
 'use strict';
 
+// read before doing anything!
+// to run a test, navagate to the base file(lab-hskprdjw) and then run 'npm test' and it should build the file and do the tests
+// you can also do the CLI by doing this "node index.js bitmap test randomImage"
+// in that set up, change only the 'test' as its the NEW FILE NAME and "randomImage" to a new transform function.
+
 
 const fs = require('fs');
-const Bmp = require('./bitmap');
-const trans = require('./transform.js');
+const read = module.exports = {};
 
-const reading = module.exports = {};
 
-reading.readWrite = function(filenamein, filenameout, transform) {
-
-  fs.readFile(`${filenamein}`, (err, data) => {
-    if (err) {
+read.read = function(path, callback) {
+  fs.readFile(path, (err, data) => {
+    if(err) {
       console.error(err);
+      return callback(err);
     }
-    let bmp = new Bmp(data);
-    // console.log('start',bmp);
-    console.log(bmp.colorArray);
+    callback(null, data);
+  });
+};
 
-    if (transform ==='reverseImage') {
-      trans.reverseImage(bmp, (err, data) => {
-        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err) : undefined);
-      });
+
+read.write = function(newData, newFilePath, callback) {
+  fs.writeFile(newFilePath, newData, (err) => {
+    if(err) {
+      console.error(err);
+      return callback(err);
     }
-
-    if (transform ==='boostBlue') {
-      trans.boostBlue(bmp, (err, data) => {
-        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err) : undefined);
-      });
-    }
-
-    if (transform === 'removeBlue') {
-      trans.removeBlue(bmp, (err, data) => {
-        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err): undefined);
-      });
-    }
-
-    if (transform === 'randomImage') {
-      trans.randomImage(bmp, (err, data) => {
-        fs.writeFile(`${filenameout}`, data.allData, err => err ? console.error(err): undefined);
-      });
-    }
-
-
+    callback(null);
   });
 };
