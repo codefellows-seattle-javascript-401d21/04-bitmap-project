@@ -5,12 +5,14 @@ const transform = module.exports = {};
 
 
 transform.reverseImage = function(bmp, callback) {
+  if (!bmp || !callback) return null;
   let test = bmp.pixelArray.reverse();
   bmp.pixelArray = test;
   callback(null, bmp);
 };
 
 transform.removeBlue = function(bmp, callback) {
+  if (!bmp || !callback) return null;
   let colorArray = bmp.colorArray;
   for(let i = 0; i < colorArray.length; i += 4) {
     colorArray[i] = 0;
@@ -20,6 +22,7 @@ transform.removeBlue = function(bmp, callback) {
 };
 
 transform.boostBlue = function(bmp, callback) {
+  if (!bmp || !callback) return null;
   let colorArray = bmp.colorArray;
   for(let i = 0; i < colorArray.length; i += 4) {
     colorArray[i] = 200;
@@ -29,6 +32,7 @@ transform.boostBlue = function(bmp, callback) {
 };
 
 transform.randomImage = function(bmp, callback) {
+  if (!bmp || !callback) return null;
   for(let i = 0; i < bmp.pixelArray.length; i++) {
     bmp.pixelArray[i] = Math.floor(Math.random() * (32 - 0) + 0);
   }
