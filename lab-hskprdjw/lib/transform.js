@@ -2,7 +2,7 @@
 
 
 const transform = module.exports = {};
-// const Bmp = require('./bitmap');
+
 
 transform.reverseImage = function(bmp, callback) {
   let test = bmp.pixelArray.reverse();
