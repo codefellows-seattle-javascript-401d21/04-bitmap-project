@@ -42,4 +42,4 @@ build.buildImage = function(inputs) {
 };
 
 //write code like "node, filename, image name, new file name, function to call'
-build.buildImage(process.argv);
+// build.buildImage(process.argv);
