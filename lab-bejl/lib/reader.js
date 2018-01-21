@@ -31,4 +31,5 @@ reader.readFile = function (path, transformation, destination) {
       }
     });
   });
+  console.log(`Your transformed bitmap is located at ${destination}`);
 };
