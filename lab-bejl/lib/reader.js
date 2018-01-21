@@ -6,10 +6,6 @@ const transform = require('./transform.js');
 const reader = module.exports = {};
 
 reader.readFile = function (path, transformation, destination) {
-  console.log(path, destination, transformation);
-
-  //node transformBmp ./assets/bitmap.bmp black ./assets/limitedchange.bmp
-
   let err = !(transform.validTransformations.includes(transformation)) ? 'ERROR: transformation was not found'
     : !(path.includes('bmp', (path.length - 3))) ? 'ERROR: please specify a valid .bmp file'
       : !(destination.includes('bmp', (destination.length - 3))) ? 'ERROR: please specify a valid destination .bmp file'
@@ -19,6 +15,7 @@ reader.readFile = function (path, transformation, destination) {
     throw (err);
   }
   if (typeof transformation !== 'string') return null;
+
   fs.readFile(path, (err, data) => {
     if (err) {
       console.error(err);
