@@ -10,7 +10,7 @@ require ('jest');
 
 let startPath = `${__dirname}/../assets/bitmap.bmp`;
 let newPath = `${__dirname}/../assets/changed.bmp`;
-
+let testPath = `${__dirname}/../assets/bitmapTEST.bmp`;
 
 
 describe('index.js module', function() {
@@ -36,6 +36,11 @@ describe('read function module', function() {
   it('test to see if a file is there that am calling to be referenced', (done) => {
     build.buildImage(['node', 'index.js', 'bitmap', 'changed', 'removeBlue']);
     expect(fs.existsSync(startPath)).toBe(true);
+    done();
+  });
+  it('test to see if a file is there that am calling to be referenced', (done) => {
+    build.buildImage(['node', 'index.js', 'bitmap', 'changed', 'removeBlue']);
+    expect(fs.existsSync(testPath)).toBe(false);
     done();
   });
   it('test to see if anything was passed into the function', (done) => {
