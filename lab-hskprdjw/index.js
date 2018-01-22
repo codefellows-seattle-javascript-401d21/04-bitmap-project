@@ -20,6 +20,7 @@ build.buildImage = function(inputs) {
   let transform = inputs[4];
 
   if (!trans.hasOwnProperty(transform)) {
+    console.log('ERROR -- you need to have the right transform name, try randomImage, reverseImage, boostBlue, removeBlue');
     return 'need to have the right transform name';
   }
 
@@ -49,4 +50,4 @@ build.buildImage = function(inputs) {
 
 // un comment this out to do a simple CMI call
 //write code like "node, filename, image name, new file name, function to call'
-// build.buildImage(process.argv);
+build.buildImage(process.argv);
