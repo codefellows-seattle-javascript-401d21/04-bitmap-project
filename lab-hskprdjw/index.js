@@ -14,9 +14,14 @@ const trans = require('./lib/transform.js');
 
 build.buildImage = function(inputs) {
   if (!inputs) return null;
+
   let filenamein = inputs[2];
   let filenameout = inputs[3];
   let transform = inputs[4];
+
+  if (!trans.hasOwnProperty(transform)) {
+    return 'need to have the right transform name';
+  }
 
   reading.read(`${__dirname}/assets/${filenamein}.bmp`, (err, fileData) => {
     if (err) {
@@ -41,5 +46,7 @@ build.buildImage = function(inputs) {
   return 'file was writen';
 };
 
+
+// un comment this out to do a simple CMI call
 //write code like "node, filename, image name, new file name, function to call'
-build.buildImage(process.argv);
+// build.buildImage(process.argv);

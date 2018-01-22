@@ -11,6 +11,7 @@ const read = module.exports = {};
 
 
 read.read = function(path, callback) {
+  if (!path) return null;
   fs.readFile(path, (err, data) => {
     if(err) {
       console.error(err);
@@ -22,6 +23,7 @@ read.read = function(path, callback) {
 
 
 read.write = function(newData, newFilePath, callback) {
+  if (!newData) return null;
   fs.writeFile(newFilePath, newData, (err) => {
     if(err) {
       console.error(err);
