@@ -1,0 +1,30 @@
+{
+  "name": "bitmap-project",
+  "version": "1.0.0",
+  "description": "Code 401 Lab 04 - Bitmap Project",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest --verbose",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strawbee/04-bitmap-project.git"
+  },
+  "author": "Joy Hou, Rima Hiraoka, Mitchell Massie, Jesus Mendoza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strawbee/04-bitmap-project/issues"
+  },
+  "homepage": "https://github.com/strawbee/04-bitmap-project#readme",
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "jest": "^22.1.3"
+  },
+  "dependencies": {
+    "commander": "^2.13.0"
+  }
+}
